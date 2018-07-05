@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
 import { AppComponent } from './app.component';
+import { AppService } from './app.service';
+import { HttpModule } from '@angular/http';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -10,9 +12,8 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
-  ],
-  providers: [],
+    BrowserModule, HttpModule,AngularMultiSelectModule,FormsModule,ReactiveFormsModule ],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

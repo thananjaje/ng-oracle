@@ -1,0 +1,313 @@
+FUNCTION
+--------------------------------------------------------------
+CREATE OR REPLACE FUNCTION totalCuriosities
+RETURN number IS
+	total number(2) := 0;
+BEGIN
+	SELECT COUNT(*) into total
+	FROM Curiosity; 
+	
+	RETURN total;
+END;
+/
+SET SERVEROUTPUT ON;
+DECLARE
+
+   tc number(2);
+
+BEGIN
+   tc :=totalCuriosities();
+   dbms_output.put_line('Total no. of Curiosities: '||tc);
+ 
+   
+END;
+/
+--------------------------------------------------------
+
+CREATE or REPLACE type FPGA_type_o as Object
+(
+no_of_gates number,
+processor number
+
+);
+/
+CREATE type FPGA_type_t is table of FPGA_type_o;
+/
+
+CREATE OR REPLACE FUNCTION get_FPGA_list(
+FPGA_ID IN CHAR
+)
+RETURN FPGA_type_t
+IS
+I_list FPGA_type_t;
+BEGIN
+SELECT FPGA_type_o(no_of_gates,processor) bulk collect
+INTO I_list FROM FPGAS
+WHERE FPGAS_ID = FPGA_ID ;
+
+RETURN I_list;
+END;
+/
+
+SELECT * FROM table(get_FPGA_list('FPG7700'));
+--------------------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION GetEffiency(
+	HR_ID IN CHAR
+)
+RETURN number IS
+	Eff number := 0;
+BEGIN
+	SELECT Efficency into Eff
+	FROM HRS H
+	WHERE H.HID  = HR_ID;
+	
+	RETURN Eff;
+END;
+/
+
+SET SERVEROUTPUT ON;
+DECLARE
+   HR_ID  HRS.HID%type :='HRS9000';
+   HC number;
+
+BEGIN
+   HC:=GetEffiency(HR_ID);
+   dbms_output.put_line('Efficency: '||HC);
+ 
+   
+END;
+/
+-------------------------------------------------------
+Correct ----
+CREATE OR REPLACE FUNCTION totalRCES(
+	C_S IN number
+)
+RETURN number IS
+	total number(2) := 0;
+BEGIN
+	SELECT COUNT(*) into total
+	FROM  RCE
+	WHERE ClockSpeed = C_S; 
+	
+	RETURN total;
+END;
+/
+SET SERVEROUTPUT ON;
+DECLARE
+   
+   CS  RCE.ClockSpeed%type :='300.00';
+   tr number(2);
+
+BEGIN
+   tr:=totalRCES(CS);
+   dbms_output.put_line('Total no. of RCES: '||tr);
+ 
+   
+END;
+/
+
+
+
+-------------------------------------------------------
+Correct ----
+CREATE OR REPLACE FUNCTION getMaxTemperature
+RETURN number IS
+	C_Heat number;
+BEGIN
+	SELECT Max(Heat) into C_Heat
+	FROM ThermalSystem;
+	
+	RETURN C_Heat;
+END;
+/
+SET SERVEROUTPUT ON;
+DECLARE
+
+   th number;
+
+BEGIN
+   th:=getMaxTemperature();
+   dbms_output.put_line('Max Temperature: '||th);
+ 
+   
+END;
+
+
+---------------------------------------------------------
+PROCEDURE
+---------------------------------------------------------
+Correct ----
+CREATE PROCEDURE Delete_FPGAS(FPGA_ID CHAR) AS 
+
+	Total_FPGA NUMBER;
+
+BEGIN	
+	DELETE FROM FPGAS
+	WHERE FPGAS.FPGAS_ID=Delete_FPGAS.FPGA_ID;
+	
+	SELECT count(*) INTO Total_FPGA
+	FROM FPGAS;
+	
+	Total_FPGA:=Total_FPGA ;
+	dbms_output.put_line('No of FPGAS after delete: '||Total_FPGA);
+End;
+/
+----------------------------------------------------------------------
+CREATE OR REPLACE PROCEDURE UPDATEearth (   
+p_location IN Earth.Earthlocation%TYPE,  
+p_speed IN Earth.OrbitalSpeed%TYPE,  
+p_heat IN Earth.Heat%TYPE,
+p_meandensity IN Earth.MeanDensity%TYPE,
+p_volume IN Earth.Volume%TYPE)
+  
+IS  
+
+BEGIN 
+ 
+UPDATE Earth SET EarthLocation=p_location, OrbitalSpeed=p_speed, Heat=p_heat, MeanDensity=p_meandensity,Volume=p_volume 
+WHERE EarthLocation=p_location;
+  
+COMMIT;
+  
+END;
+/
+
+SET SERVEROUTPUT ON;
+EXECUTE UPDATEearth();
+
+----------------------------------------------------------------------
+CREATE OR REPLACE PROCEDURE Avg_Pressure(C_ID CHAR) 
+AS
+   avg_pressure  NUMBER := 0;
+BEGIN
+     SELECT CuriosityID,AVG(Pressure)
+     INTO C_ID,avg_pressure
+     FROM ThermalSystem
+	 GROUP BY CuriosityID=C_ID;
+	
+   DBMS_OUTPUT.put_line (avg_pressure);	
+   
+EXCEPTION
+   WHEN NO_DATA_FOUND
+   THEN
+      DBMS_OUTPUT.put_line ('No Data');
+END;
+/
+
+DROP PROCEDURE Avg_Pressure;
+---------------------------------------------------------------------------------
+
+SET SERVEROUTPUT ON;
+CREATE OR REPLACE PROCEDURE GetMaxTemp
+IS
+
+	C_Heat NUMBER := 0;
+
+BEGIN
+
+	SELECT Max(Heat) INTO C_Heat
+	FROM ThermalSystem;
+
+	DBMS_OUTPUT.put_line(C_Heat);
+
+	EXCEPTION 
+	WHEN NO_DATA_FOUND
+	THEN
+	DBMS_OUTPUT.put_line('No Data Found');
+
+END;
+/
+-----------------------------------------------------------------------------------------
+CREATE OR REPLACE PROCEDURE add_curiosity 
+(	
+    p_curiosityID IN Curiosity.CuriosityID%TYPE,  
+
+	p_mass IN Curiosity.Mass%TYPE,  
+
+	p_clong IN Curiosity.CLong%TYPE,
+	p_width IN Curiosity.width%TYPE,
+	p_distance IN Curiosity.distance%TYPE,
+	p_earthlocation IN Curiosity.EarthLocation%TYPE,
+	p_ritg IN Curiosity.RITG_ID%TYPE
+)  
+
+IS  
+
+BEGIN
+  INSERT INTO Curiosity (CuriosityID, Mass, CLong, width, distance, EarthLocation, RITG_ID) 
+VALUES(
+p_curiosityID, p_mass, p_clong, p_width, p_distance, p_earthlocation, p_ritg);
+
+ 
+END;
+/
+
+INSERT INTO Curiosity VALUES  ('CUR2008', 205, 305, 405, 505, 'ERL1001', 'RDI1002' );
+
+---------------------------------------------------------------------------
+Trigger
+---------------------------------------------------------------------------
+Correct ----
+CREATE OR REPLACE TRIGGER MarsOrbiter_before_insert
+BEFORE INSERT
+   ON MarsOrbiter
+   FOR EACH ROW
+
+DECLARE
+BEGIN
+    IF (:new.activedays < 100) THEN
+      RAISE_APPLICATION_ERROR(-20000,'ActiveDays must be greater than 100 Days.');
+    END IF;      
+
+END;
+/
+
+INSERT INTO MarsOrbiter VALUES  ('AOB4004' ,'ERL1001','18-SEPTEMBER-2019' , 18);
+
+DROP TRIGGER MarsOrbiter_before_insert;
+
+-------------------------------------------------------------------
+Correct ----
+CREATE OR REPLACE TRIGGER Curiosity_before_update
+BEFORE UPDATE
+   ON Curiosity
+   FOR EACH ROW
+
+DECLARE
+BEGIN
+    IF (:new.Mass < 100) THEN
+      RAISE_APPLICATION_ERROR(-20000,'Mass must be greater than 100 Kg.');
+    END IF;      
+
+	IF (:new.distance < 10) THEN
+      RAISE_APPLICATION_ERROR(-20000,'Distance must be greater than 10Km.');
+    END IF;
+END;
+/
+
+UPDATE Curiosity SET distance = 2 where CuriosityID = 'CUR2000';
+
+
+-------------------------------------------------------------------------------
+CREATE OR REPLACE TRIGGER APXS_before_delete
+BEFORE DELETE
+   ON APXS
+   FOR EACH ROW
+
+DECLARE
+BEGIN
+    IF (:OLD.temp > 100) THEN
+      RAISE_APPLICATION_ERROR(-20000,'Temperature must be greater than 100.');
+    END IF;      
+
+	IF (:OLD.no_of_gates > 10) THEN
+      RAISE_APPLICATION_ERROR(-20000,'no_of_gates must be less than 3.');
+    END IF;
+END;
+/
+INSERT INTO APXS VALUES  ('SPM8815' ,200 ,10 ,2);
+DELETE FROM APXS where SP_ID = 'SPM8815';
+DROP TRIGGER APXS_before_delete;
+
+
+----------------------------------------------------------------------------------------------------
