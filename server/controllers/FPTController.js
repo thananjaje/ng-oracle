@@ -44,6 +44,48 @@ exports.getTableList = function (req, res, next) {
 
 }
 
+exports.getTable = function (req, res, next) {
+	console.log(req.params.tid)
+	oracledb.getConnection(
+		{
+			user: config.user,
+			password: config.password,
+			connectString: config.connectString
+		},
+		function (err, connection) {
+			if (err) {
+				console.error(err.message);
+				return;
+			}
+			connection.execute(
+				"SELECT * FROM " + req.params.tid,
+				function (err, result) {
+					if (err) {
+						console.error(err.message);
+						doRelease(connection);
+						return;
+					}
+					// console.log(result.rows);
+					doRelease(connection);
+					// resArr = result.rows;
+					res.status(201).json({
+						success: true,
+						data: result
+					});
+					console.log(result);
+				});
+		});
+
+	function doRelease(connection) {
+		connection.close(
+			function (err) {
+				if (err)
+					console.error(err.message);
+			});
+	}
+
+}
+
 exports.totalCuriosities = function (req, res, next) {
 	Oracledb.getConnection(
 		{

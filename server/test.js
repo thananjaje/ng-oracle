@@ -3,7 +3,7 @@ var config = require('./config');
 
 
 
-function getEmployee() {
+function getEmployee(x) {
   return new Promise(async function (resolve, reject) {
     let conn;
 
@@ -15,26 +15,7 @@ function getEmployee() {
       });
 
       let result = await conn.execute(
-        `CREATE OR REPLACE PROCEDURE Avg_Pressure(C_ID CHAR) 
-        AS
-           avg_pressure  NUMBER := 0/
-        BEGIN
-             SELECT CuriosityID,AVG(Pressure)
-             INTO C_ID,avg_pressure
-             FROM ThermalSystem
-           GROUP BY CuriosityID=C_ID/
-          
-           DBMS_OUTPUT.put_line (avg_pressure)/
-           
-        EXCEPTION
-           WHEN NO_DATA_FOUND
-           THEN
-              DBMS_OUTPUT.put_line ('No Data')/
-        END
-        /
-        
-        DROP PROCEDURE Avg_Pressure/
-        `
+        "SELECT * FROM " + x,
       );
       resolve(result);
 
@@ -54,7 +35,7 @@ function getEmployee() {
 
 async function run() {
   try {
-    let res = await getEmployee();
+    let res = await getEmployee("Earth");
     console.log(res);
   } catch (err) {
     console.error(err);

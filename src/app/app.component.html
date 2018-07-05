@@ -13,11 +13,37 @@
   </angular2-multiselect>
 </div>
 
-
+<br>
 <div class="container" style="padding-top: 2%">
+  <h5 *ngFor="let row of headings">
+    <div>
+      <h5> {{row}} </h5>
+    </div>
+  </h5>
   <h5 *ngFor="let row of tables">
     <div>
-      <h5> {{row[0]}} {{row[1]}} {{row[2]}} {{row[3]}} {{row[4]}} {{row[5]}} {{row[6]}} </h5>
+      <h5> {{row[0]}}  {{row[1]}}  {{row[2]}}   {{row[3]}}  {{row[4]}}  {{row[5]}}   {{row[6]}}  {{row[7]}} </h5>
     </div>
   </h5>
 </div>
+
+<!-- <table width="100%" border="1">
+    <thead>
+        <tr *ngFor="let row of head">
+            <p> {{row}}</p>
+            <td> {{row[1]}}</td>
+            <td> {{row[2]}}</td>
+            <td> {{row[3]}}</td>
+            <td> {{row[4]}}</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of tables">
+            <td> {{row[0]}}</td>
+            <td> {{row[1]}}</td>
+            <td> {{row[2]}}</td>
+            <td> {{row[3]}}</td>
+            <td> {{row[4]}}</td>
+      </tr>
+    </tbody>
+</table> -->

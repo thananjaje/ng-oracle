@@ -22,6 +22,18 @@ export class AppService {
       .map((response: Response) => response.json())
       .catch(this.handleError);
   }
+  
+  getTable(tid) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    // headers.append('Authorization', `${this.jwtToken}`);
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http
+      .get(`http://localhost:1995/getTable/${tid}`, options)
+      .map((response: Response) => response.json())
+      .catch(this.handleError);
+  }
 
   totalCuriosities() {
     let headers = new Headers();

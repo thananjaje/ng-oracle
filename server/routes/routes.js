@@ -10,6 +10,7 @@ apiRoutes.get('/', function (req, res) {
 
 // -------------- FPT Oracle ----------------
 apiRoutes.get('/tables/', FPTController.getTableList);
+apiRoutes.get('/getTable/:tid', FPTController.getTable);
 apiRoutes.get('/totalCuriosities/', FPTController.totalCuriosities);
 apiRoutes.get('/FPGAtypeo/', FPTController.FPGAtypeo);
 apiRoutes.get('/GetEffiency/', FPTController.GetEffiency);
