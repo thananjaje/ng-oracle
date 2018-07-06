@@ -141,9 +141,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -160,11 +164,13 @@ export class AppComponent implements OnInit {
             console.log(data.data.metaData);
             console.log(data.data.rows);
             // this.headings = data.data.metaData
-            this.tables = data.data.rows;
-            // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -183,9 +189,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -204,9 +214,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -225,9 +239,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -267,9 +285,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -288,9 +310,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -309,9 +335,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -330,9 +360,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -351,9 +385,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -372,9 +410,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -393,10 +435,14 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
-              head.push(data.data.metaData[i].name)
-            }
-            console.log(head);
+            var head = [];
+            for (var i = 0; i < data.data.metaData.length; i++) {
+
+             head.push(data.data.metaData[i].name)
+           }
+           this.headings = head;
+
+           console.log(head);
           }
         });
         break;
@@ -414,9 +460,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -435,10 +485,14 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
-              head.push(data.data.metaData[i].name)
-            }
-            console.log(head);
+            var head = [];
+            for (var i = 0; i < data.data.metaData.length; i++) {
+
+             head.push(data.data.metaData[i].name)
+           }
+           this.headings = head;
+
+           console.log(head);
           }
         });
         break;
@@ -456,9 +510,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -477,10 +535,14 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
-              head.push(data.data.metaData[i].name)
-            }
-            console.log(head);
+            var head = [];
+            for (var i = 0; i < data.data.metaData.length; i++) {
+
+             head.push(data.data.metaData[i].name)
+           }
+           this.headings = head;
+
+           console.log(head);
           }
         });
         break;
@@ -498,9 +560,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -519,9 +585,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -540,9 +610,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -560,10 +634,13 @@ export class AppComponent implements OnInit {
             console.log(data.data.rows);
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
-            // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -582,9 +659,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -603,9 +684,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -624,9 +709,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });
@@ -645,9 +734,13 @@ export class AppComponent implements OnInit {
             // this.headings = data.data.metaData
             this.tables = data.data.rows;
             // this.populateForm(this.user);
-            var head = []; for (var i = 0; i < data.data.metaData.length; i++) {
+            var head = [];
+             for (var i = 0; i < data.data.metaData.length; i++) {
+
               head.push(data.data.metaData[i].name)
             }
+            this.headings = head;
+
             console.log(head);
           }
         });

@@ -4,6 +4,7 @@ var config = require('./config');
 
 
 function getEmployee(x) {
+  table= x
   return new Promise(async function (resolve, reject) {
     let conn;
 
@@ -15,7 +16,9 @@ function getEmployee(x) {
       });
 
       let result = await conn.execute(
-        "SELECT * FROM " + x,
+        `select *
+        from :table`,
+        [table="Earth"],
       );
       resolve(result);
 
@@ -36,7 +39,7 @@ function getEmployee(x) {
 async function run() {
   try {
     let res = await getEmployee("Earth");
-    console.log(res);
+    console.log(res.rows);
   } catch (err) {
     console.error(err);
   }
