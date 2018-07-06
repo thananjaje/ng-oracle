@@ -14,7 +14,7 @@ module.exports = {
 
   //OracleDB
 
-  user: "jaje",
-  password: "user123",
+  user: "Thinu",
+  password: "123",
   connectString: "localhost/xe"
 };

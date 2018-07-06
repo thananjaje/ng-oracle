@@ -89,8 +89,8 @@ exports.getTable = function (req, res, next) {
 exports.totalCuriosities = function (req, res, next) {
 	Oracledb.getConnection(
 		{
-			user: "jaje",
-			password: "user123",
+			user: "Thinu",
+			password: "123",
 			connectString: "localhost/xe"
 		})
 		.then(function (conn) {
@@ -310,8 +310,8 @@ exports.totalRCES = function (req, res, next) {
 exports.getMaxTemperature = function (req, res, next) {
 	Oracledb.getConnection(
 		{
-			user: "jaje",
-			password: "user123",
+			user: "Thinu",
+			password: "123",
 			connectString: "localhost/xe"
 		})
 		.then(function (conn) {
@@ -441,10 +441,7 @@ exports.UPDATEearth = function (req, res, next) {
 					  
 					END;
 					/
-					
-					SET SERVEROUTPUT ON;
-					EXECUTE UPDATEearth();
-				 `,
+					`,
 				function (err, result) {
 					if (err) {
 						console.error(err.message);
@@ -625,9 +622,7 @@ exports.addcuriosity = function (req, res, next) {
 				
 				 
 				END;
-				/
-				
-				INSERT INTO Curiosity VALUES  ('CUR2008', 205, 305, 405, 505, 'ERL1001', 'RDI1002' );`,
+				/`,
 				function (err, result) {
 					if (err) {
 						console.error(err.message);
@@ -658,8 +653,8 @@ exports.addcuriosity = function (req, res, next) {
 exports.MarsOrbiterbeforeinsert = function (req, res, next) {
 	Oracledb.getConnection(
 		{
-			user: "jaje",
-			password: "user123",
+			user: "Thinu",
+			password: "123",
 			connectString: "localhost/xe"
 		})
 		.then(function (conn) {
@@ -677,10 +672,6 @@ exports.MarsOrbiterbeforeinsert = function (req, res, next) {
 			
 			END;
 			/
-			
-			INSERT INTO MarsOrbiter VALUES  ('AOB4004' ,'ERL1001','18-SEPTEMBER-2019' , 18);
-			
-			DROP TRIGGER MarsOrbiter_before_insert;
 			`,
 				[110]  // bind value for :id
 			)
@@ -728,8 +719,7 @@ exports.Curiositybeforeupdate = function (req, res, next) {
 					END IF;
 				END;
 				/
-				
-				UPDATE Curiosity SET distance = 2 where CuriosityID = 'CUR2000';        `,
+			   `,
 				function (err, result) {
 					if (err) {
 						console.error(err.message);
@@ -786,9 +776,6 @@ exports.APXSbeforedelete = function (req, res, next) {
 					END IF;
 				END;
 				/
-				INSERT INTO APXS VALUES  ('SPM8815' ,200 ,10 ,2);
-				DELETE FROM APXS where SP_ID = 'SPM8815';
-				DROP TRIGGER APXS_before_delete;
 				 `,
 				function (err, result) {
 					if (err) {

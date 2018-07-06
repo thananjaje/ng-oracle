@@ -15,14 +15,16 @@
 
 <br>
 <div class="container" style="padding-top: 2%">
-  <h5 *ngFor="let row of headings">
-    <div>
+
+  <div class="row">
+    <div class="col" *ngFor="let row of headings">
       <h5> {{row}} </h5>
     </div>
-  </h5>
+  </div>
+
   <h5 *ngFor="let row of tables">
     <div>
-      <h5> {{row[0]}}  {{row[1]}}  {{row[2]}}   {{row[3]}}  {{row[4]}}  {{row[5]}}   {{row[6]}}  {{row[7]}} </h5>
+      <h5> {{row[0]}} {{row[1]}} {{row[2]}} {{row[3]}} {{row[4]}} {{row[5]}} {{row[6]}} {{row[7]}} </h5>
     </div>
   </h5>
 </div>
